@@ -1,67 +1,34 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora Basal</title>
-    <style>
-        body {
-            font-family: Arial, Verdana, Geneva, Tahoma, sans-serif;
-            text-align: center;
-            background-color: rgb(92, 147, 184); /* Fondo verde */ 
-        }
-        #calcular {
-            margin-top: 10px;
-        }
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-    </style>
-</head>
-<body>
-    <h1>Calculadora Basal</h1>
-    <p>Ingresa tus datos para calcular tu tasa metabólica basal (TMB):</p>
-    <label for="edad">Edad:</label>
-    <input type="number" id="edad" placeholder="Edad" min="0"><br><br>
+<html>
+	<head>
+        <title>Calculadora de hidratación </title>
+        <link rel="stylesheet" href="./style.css" />
+        <script src="script.js" defer></script>
+    </head>
+	<body>
+        <div id="contenedor">
+            <div id="Calculadora">
+                <div>
+                <h1 style="color: #000000bd; background-color: #4da58b">Hidratacion Basal</h1>
+                <p class="item">Completa todos los datos</p>
+                <input class="item" id="peso" type="number" placeholder="Peso en kg" />
+                <p class="item" id="error">* Debe completar todos los datos</p>
+                <button class="item" id="calcular">Calcular</button>
+                <p class="item resultado" id="flu">71cc/h</p>
+                <p class="item resultado" id="man">m+m/2 : 105cc/h</p> 
+            
+            </div>
+            <div id="detalle">
+                <div class="contenido">
+                <h1 style="color: #030303; border: 1cap; font-style: oblique;">¿Como se calcula?</h1>
+                <ul>
+                    <li>De 0kg a 10kg, se calcula 100cc por cada kilo.</li>
+                    <li>Se suman 50cc por cada kilo de peso por arriba de 10kg, hasta 20kg</li>
+                    <li>De 20kg para arriba, se suman 20cc por cada kilo adicional</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    </body>
 
-    <label for="peso">Peso (kg):</label>
-    <input type="number" id="peso" placeholder="Peso" min="0"><br><br>
-
-    <label for="altura">Altura (cm):</label>
-    <input type="number" id="altura" placeholder="Altura" min="0"><br><br>
-
-    <label for="genero">Género:</label>
-    <select id="genero">
-        <option value="mujer">Mujer</option>
-        <option value="hombre">Hombre</option>
-    </select><br><br>
-
-    <button id="calcular">Calcular TMB</button><br><br>
-
-    <div id="resultado"></div>
-    
-    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTd0q61jNmQlazRoVj2ePsY4AEgm3tti1KlVw&usqp=CAU" alt="Imagen de muestra"> <!-- Reemplaza 'tu_imagen.jpg' con la URL de tu imagen -->
-
-    <script>
-        const calcularButton = document.getElementById('calcular');
-        calcularButton.addEventListener('click', calcularTMB);
-
-        function calcularTMB() {
-            const edad = parseFloat(document.getElementById('edad').value);
-            const peso = parseFloat(document.getElementById('peso').value);
-            const altura = parseFloat(document.getElementById('altura').value);
-            const genero = document.getElementById('genero').value;
-            let tmb = 0;
-
-            if (genero === 'mujer') {
-                tmb = 655 + (9.6 * peso) + (1.8 * altura) - (4.7 * edad);
-            } else if (genero === 'hombre') {
-                tmb = 66 + (13.7 * peso) + (5 * altura) - (6.8 * edad);
-            }
-
-            document.getElementById('resultado').innerHTML = `Tu TMB es: ${tmb.toFixed(2)} kcal/día`;
-        }
-    </script>
-</body>
 </html>
